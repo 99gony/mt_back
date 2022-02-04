@@ -11,6 +11,7 @@ export class AppleStrategy extends PassportStrategy(Strategy) {
       callbackURL: process.env.APPLE_CALLBACK_URL,
       keyID: process.env.APPLE_KEY_ID,
       privateKeyLocation: process.env.APPLE_KEY_LOCATION,
+      passReqToCallback: true,
     });
   }
 

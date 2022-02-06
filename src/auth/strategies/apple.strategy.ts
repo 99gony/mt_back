@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { PassportStrategy } from '@nestjs/passport';
-import jwtDecode from 'jwt-decode';
 import { DecodedIdToken, Strategy, VerifyCallback } from 'passport-apple';
 
 @Injectable()
 export class AppleStrategy extends PassportStrategy(Strategy, 'apple') {
-  constructor() {
+  constructor(private jwtService: JwtService) {
     super({
       clientID: process.env.APPLE_CLIENT_ID,
       teamID: process.env.APPLE_TEAM_ID,
@@ -22,7 +22,7 @@ export class AppleStrategy extends PassportStrategy(Strategy, 'apple') {
     profile: any,
     done: VerifyCallback,
   ) {
-    const decodedIdToken: DecodedIdToken = jwtDecode(idToken);
+    const decodedIdToken: DecodedIdToken = this.jwtService.verify(idToken);
     console.log(decodedIdToken);
     const user = {
       provider: 'apple',

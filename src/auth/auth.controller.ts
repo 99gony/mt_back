@@ -8,9 +8,7 @@ export class AuthController {
 
   @Get('/apple')
   @UseGuards(AuthGuard('apple'))
-  appleLogin() {
-    return 'ok';
-  }
+  appleLogin() {}
 
   @Post('/apple/callback')
   @UseGuards(AuthGuard('apple'))

@@ -29,6 +29,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/typeorm": "^8.0.3",
     "bcrypt": "^5.0.1",
+    "jwt-decode": "^3.1.2",
     "mysql2": "^2.3.3",
     "passport": "^0.5.2",
     "passport-apple": "^2.0.1",
